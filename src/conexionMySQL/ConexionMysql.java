@@ -70,8 +70,13 @@ public class ConexionMysql {
 		}
 	}
 
+	
 	/**
-	 * Create a table in a database
+	 * Create a table in a database with an id column type int and another column type varchar
+	 * 
+	 * @param dbName - Database name to use
+	 * @param tableName - Create a table with this name
+	 * @param columnName -
 	 */
 	public void createTable(String dbName, String tableName, String columnName) {
 		try {
@@ -79,7 +84,7 @@ public class ConexionMysql {
 			Statement stdb = this.connectionObj.createStatement();
 			stdb.executeUpdate(queryDb);
 
-			String query = "CREATE TABLE " + tableName + "" + "(ID INT PRIMARY KEY AUTO_INCREMENT, " + columnName
+			String query = "CREATE TABLE " + tableName + " (ID INT PRIMARY KEY AUTO_INCREMENT, " + columnName
 					+ " VARCHAR(20) NOT NULL);";
 
 			Statement st = this.connectionObj.createStatement();
@@ -125,8 +130,8 @@ public class ConexionMysql {
 	/**
 	 * Insert a query in the table
 	 *  
-	 * @param dbName
-	 * @param inserQuery
+	 * @param dbName - Database name
+	 * @param inserQuery - SQL query to execute
 	 */
 	public void insertQuery(String dbName, String insertQuery) {
 		try {
