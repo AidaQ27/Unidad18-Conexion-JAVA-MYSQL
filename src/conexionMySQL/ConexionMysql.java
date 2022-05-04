@@ -46,10 +46,12 @@ public class ConexionMysql {
 			String query = "CREATE DATABASE " + name;
 			Statement st = this.connectionObj.createStatement();
 			st.executeUpdate(query);
+			System.out.println("Database created!");
 
 		} catch (Exception e) {
 			System.out.println("Creating database fail");
 			System.out.println(e);
+			System.out.println(e.getMessage());
 		}
 	}
 
@@ -148,7 +150,7 @@ public class ConexionMysql {
 			Statement st = this.connectionObj.createStatement();
 
 			st.executeUpdate(query);
-			System.out.println("Inserted row/s!");
+			System.out.println("Query suceesfully!");
 
 		} catch (Exception e) {
 			System.out.println("Inserting row/s fail");
