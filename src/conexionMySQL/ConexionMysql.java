@@ -11,13 +11,13 @@ public class ConexionMysql {
 
 	// Constructor
 	public ConexionMysql() {
-
 	};
 
 	public void conectar() {
+		Config config = new Config();
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection conexion = DriverManager.getConnection("jdbc:mysql://192.168.1.145:3306", "remote", "Reus_2022");
+			Connection conexion = DriverManager.getConnection(config.getDireccion(), config.getUser(), config.getPass());
 			this.connectionObj = conexion;
 			System.out.println("Conectado a la base de datos con exito");
 		} catch (Exception e) {
@@ -72,33 +72,6 @@ public class ConexionMysql {
 		}
 	}
 
-	
-	/**
-	 * Create a table in a database with an id column type int and another column type varchar
-	 * 
-	 * @param dbName - Database name to use
-	 * @param tableName - Create a table with this name
-	 * @param columnName -
-	 */
-	public void createTable(String dbName, String tableName, String columnName) {
-		try {
-			String queryDb = "USE " + dbName + ";";
-			Statement stdb = this.connectionObj.createStatement();
-			stdb.executeUpdate(queryDb);
-
-			String query = "CREATE TABLE " + tableName + " (ID INT PRIMARY KEY AUTO_INCREMENT, " + columnName
-					+ " VARCHAR(20) NOT NULL);";
-
-			Statement st = this.connectionObj.createStatement();
-
-			st.executeUpdate(query);
-			System.out.println("Table created!");
-
-		} catch (Exception e) {
-			System.out.println("Create table fail");
-			System.out.println(e);
-		}
-	}
 
 	/**
 	 * Drop a table in a database
