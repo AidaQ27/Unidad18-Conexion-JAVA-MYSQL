@@ -37,7 +37,7 @@ public class mainApp {
 		mysql.insertQuery("Almacenes", sqlQuery);
 
 		/*
-		 * Insertar registros en la tabla fabricantes
+		 * Insertar registros en la tabla almacen
 		 */
 
 		sqlQuery = "INSERT INTO almacen(Lugar, Capacidad) VALUE" 
@@ -49,7 +49,7 @@ public class mainApp {
 		mysql.insertQuery("Almacenes", sqlQuery);
 		
 		/*
-		 * Insertar registros en la tabla articulos 
+		 * Insertar registros en la tabla cajas
 		 */
 		sqlQuery = "INSERT INTO cajas(Contenido, Valor, Codigo) VALUE" 
 		+ "(\"Vino\", 25, 1),"
